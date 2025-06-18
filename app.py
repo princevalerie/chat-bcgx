@@ -113,7 +113,7 @@ class FinancialAnalystBot:
             os.environ["GOOGLE_API_KEY"] = api_key
             
             self.llm = GoogleGenerativeAI(
-                model="gemini-pro",
+                model="gemini-2.0-flash",
                 temperature=0.1
             )
             
