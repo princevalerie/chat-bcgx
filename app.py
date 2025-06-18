@@ -7,11 +7,10 @@ from datetime import datetime
 import pandas as pd
 import json
 
-# LangChain imports
+# Updated LangChain imports
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.embeddings import GoogleGenerativeAIEmbeddings
-from langchain.llms import GoogleGenerativeAI
+from langchain_community.vectorstores import FAISS
+from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.schema import Document
@@ -112,8 +111,9 @@ class FinancialAnalystBot:
             self.gemini_api_key = api_key
             os.environ["GOOGLE_API_KEY"] = api_key
             
-            self.llm = GoogleGenerativeAI(
-                model="gemini-2.0-flash",
+            # Updated to use ChatGoogleGenerativeAI instead of GoogleGenerativeAI
+            self.llm = ChatGoogleGenerativeAI(
+                model="gemini-1.5-flash",
                 temperature=0.1
             )
             
